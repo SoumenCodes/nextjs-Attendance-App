@@ -52,7 +52,7 @@ function EventCalendar() {
         {events.map((event) => (
           <div
             key={event.id}
-            className="bg-white p-5 rounded-md border-2 border-gray-100 border-t-4 odd:bg-lamaSky even:bg-lamaPurple"
+            className="bg-white p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-lamaSky even:border-lamaPurple"
           >
             <div className="flex items-center justify-between">
               <h3 className="font-semibold text-gray-600">{event.title}</h3>
