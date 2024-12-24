@@ -113,6 +113,7 @@ const menuItems = [
   },
 ];
 
+import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -123,16 +124,19 @@ function Menu() {
       {menuItems.map((i) => (
         <div className="flex flex-col gap-2" key={i.title}>
           <span className="hidden lg:block text-gray-400 my-4">{i.title}</span>
-          {i.items.map((items) => (
-            <Link
-              href={items.href}
-              key={items.label}
-              className="flex items-center justify-center lg:justify-start gap-4 py-2 text-gray-400"
-            >
-              <Image src={items.icon} alt="icon" width={20} height={20} />
-              <span className="hidden lg:block">{items.label}</span>
-            </Link>
-          ))}
+          {i.items.map((items) => {
+            if (items.visible.includes(role))
+              return (
+                <Link
+                  href={items.href}
+                  key={items.label}
+                  className="flex items-center justify-center lg:justify-start gap-4 py-2 text-gray-400 rounded-md hover:bg-lamaSky md:px-2"
+                >
+                  <Image src={items.icon} alt="icon" width={20} height={20} />
+                  <span className="hidden lg:block">{items.label}</span>
+                </Link>
+              );
+          })}
         </div>
       ))}
     </div>
